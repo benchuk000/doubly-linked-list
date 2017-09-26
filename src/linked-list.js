@@ -18,10 +18,10 @@ class LinkedList {
             this._head = node;
             this._tail = node;
         }
-    
+
         this.length++;
 
-        return this; 
+        return this;
     }
 
     head() {
@@ -162,17 +162,17 @@ class LinkedList {
         if (index === 0) {
             return this.removeFirst();
         }
-        
+
         if (index === this.length - 1) {
             return this.remove();
          }
-        
+
         nodeToRemove.prev.next = nodeToRemove.next;
         nodeToRemove.next.prev = nodeToRemove.prev;
         nodeToRemove.next = nodeToRemove.prev = null;
-        
+
         this.length--;
-        
+
         return this;
     }
 
@@ -181,7 +181,7 @@ class LinkedList {
         this._head = this._tail;
         this._tail = temp;
         var currentNode = this._head;
-        
+
         while(currentNode !== null) {
             temp = currentNode.next;
             currentNode.next = currentNode.prev;

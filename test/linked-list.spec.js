@@ -81,6 +81,21 @@ describe('LinkedList', () => {
 
             expect(list.at(position)).to.equal(data);
         });
+
+        it ('shouldn\'t replace existing values', () => {
+            const list = new LinkedList();
+            const position = 1;
+            const data = 42;
+            let values = [10, 20];
+            values.forEach((value) => { list.append(value) });
+
+            list.insertAt(position, data);
+            values.splice(position, 0, data);
+
+            values.forEach((value, index) => {
+                expect(list.at(index)).to.equal(value);
+            });
+        });
     });
     describe('#isEmpty', () => {
         it('should return true if list is empty', () => {
@@ -167,7 +182,8 @@ describe('LinkedList', () => {
     describe('chaining', () => {
         it('append reverse deleteAt insertAt methods should be chainable', () => {
             const list = new LinkedList();
-    
+
+
             function fn() {
                 list.append(4).reverse().deleteAt(0).clear().insertAt(0, 3);
             }
